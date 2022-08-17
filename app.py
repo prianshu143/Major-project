@@ -16,7 +16,8 @@ def home():
 
 
 def predict():
-  dataset = pd.read_csv('vaccination_tweets.csv')
+  dataset = pd.read_csv('vaccination_tweets.csv',nrows=1872)
+  data = dataset[['text','user_verified']]
   # First step: cleaning Text and removing number and punctuation marks.
   # Cleaning the texts for all review using for loop
   import re
