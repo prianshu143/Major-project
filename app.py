@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 app = Flask(__name__)
-model = pickle.load(open('/content/drive/My Drive/Major-project.pkl','rb')) 
+model = pickle.load(open('Major-project.pkl','rb')) 
 
 @app.route('/')
 def home():
@@ -16,7 +16,7 @@ def home():
 
 
 def predict():
-  dataset = pd.read_csv('/content/drive/My Drive/Colab Notebooks/dataset/vaccination_tweets.csv')
+  dataset = pd.read_csv('vaccination_tweets.csv')
   # First step: cleaning Text and removing number and punctuation marks.
   # Cleaning the texts for all review using for loop
   import re
@@ -84,4 +84,5 @@ def predict():
   return render_template('index.html', prediction_text='NLP Model  has predicted about the text : {}'.format(prediction))
 
 
-app.run()
+if __name__=="__main__":
+  app.run(debug=True)
